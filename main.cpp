@@ -1,5 +1,17 @@
-﻿#include <fstream>
+﻿/*
+	Auteur :
+		* Max Bleriot Mba Fossi - 2417938
+		* Roosevelt Sonfack Ngoune - 2464064
+	Date : 03/18/2026
+*/
+
+#include <fstream>
+#include <iostream>
 #include "bibliotheque_cours.hpp"
+#include "VilainHeros.hpp"
+#include <span>
+#include "constantes.hpp"
+
 using namespace std;
 
 using UInt8  = uint8_t;
@@ -43,6 +55,44 @@ T&& as_ref(T&& t) {
 	return std::forward<T>(t);
 }
 
+template<typename T>
+void lireT(istream& f, vector<shared_ptr<T>>& listeT) {
+	static_assert(std::is_same<T, Heros>::value || std::is_same<T, Vilain>::value);
+	unsigned taille = lireUint16(f);
+	while (taille > 0) {
+		string nom = lireString(f);
+		string parution = lireString(f);
+		shared_ptr<T> t;
+		if constexpr (std::is_same_v<T, Vilain>) {
+			string objectif = lireString(f);
+			t = make_shared<T>(nom, parution, objectif);
+		}
+		else {
+			string ennemi = lireString(f);
+			t = make_shared<T>(nom, parution, ennemi);
+			unsigned sousTaille = lireUint8(f);
+			while (sousTaille > 0) {
+				t->ajouterAllies(lireString(f));
+				sousTaille--;
+			}
+		}		
+		taille--;
+		listeT.push_back(t);
+	}
+	
+}
+
+template<typename T>
+void afficherListe(vector<shared_ptr<T>>& listeT, const string& ligneSeparation, int couleur) {
+	static_assert(std::is_same<T, Heros>::value || std::is_same<T, Vilain>::value || std::is_same<T, Personnage>::value || std::is_same<T, VilainHeros>::value);
+	
+	for (const auto t : listeT) {
+		t->changerCouleur(cout, couleur);
+		t->afficher(cout);
+		cout << ligneSeparation;
+	}
+	//Personnage::changerCouleur(cout, 0);
+}
 
 int main()
 {
@@ -55,7 +105,7 @@ int main()
 	
 	// Trait de separation
 	static const string trait =
-		"═════════════════════════════════════════════════════════════════════════";
+		"\n═════════════════════════════════════════════════════════════════════════\n";
 
 	// Ouverture des fichiers binaires
 	ifstream fichierHeros("heros.bin", ios::binary);
@@ -64,5 +114,40 @@ int main()
 	fichierVilains.exceptions(ios::failbit);
 
 	//TODO: Votre code pour le main commence ici
+	auto listeHeros = vector<shared_ptr<Heros>>();
+	auto listeVilains = vector<shared_ptr<Vilain>>();
+	auto listePersonnage = vector<shared_ptr<Personnage>>();
+	auto listeVH = vector<shared_ptr<VilainHeros>>();
+	lireT<Heros>(fichierHeros, listeHeros);
+	lireT<Vilain>(fichierVilains, listeVilains);		
 	
+	cout << "***************  HEROS  *************** " << endl;
+	afficherListe<Heros>(listeHeros, trait, constantes::BLEU);
+	cout << "***************  VILAINS  *************** " << endl;
+	afficherListe<Vilain>(listeVilains, trait, constantes::ROUGE);
+	
+	// Personnage p(listeHeros[0]); 'Personnage::Personnage' : impossible d'accéder à protected membre déclaré(e) dans la classe 'Personnage'	
+	
+	listePersonnage.insert(listePersonnage.end(), listeHeros.begin(), listeHeros.end());
+	listePersonnage.insert(listePersonnage.end(), listeVilains.begin(), listeVilains.end());
+
+	cout << "***************  PERSONNAGES  *************** " << endl;
+	
+	afficherListe<Personnage>(listePersonnage, trait, constantes::WHITE);
+	
+	for (auto h : listeHeros) {
+		int pos = 0;
+		do {
+			pos = rand() % listeVilains.size();
+		} while (h->getEnnemi() == listeVilains[pos]->getNom());
+		
+		auto vilainHeros = make_shared<VilainHeros>(*listeVilains[pos], *h);
+
+		listeVH.push_back(vilainHeros);
+	}
+
+	cout << "***************  VILAIN-HEROS  *************** " << endl;
+
+	afficherListe<VilainHeros>(listeVH, trait, constantes::MAGENTA);
+
 }
