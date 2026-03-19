@@ -9,13 +9,6 @@
 #include <string>
 
 namespace constantes {
-    // Couleurs ANSI (Codes de formatage console)   
-    inline constexpr int BLEU = 94;
-    inline constexpr int ROUGE = 91;
-    inline constexpr int CYAN = 96;
-    inline constexpr int MAGENTA = 95;
-    inline constexpr int WHITE = 0;
-
     // Chaînes de caractères répétitives
     inline const std::string ligneSeparation = "\n\033[92m"
         "════════════════════════════════════════════════════════════════════"

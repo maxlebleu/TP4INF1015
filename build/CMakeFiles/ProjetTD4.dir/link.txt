@@ -1,0 +1,1 @@
+/usr/bin/g++ -g --coverage CMakeFiles/ProjetTD4.dir/affichable.cpp.o CMakeFiles/ProjetTD4.dir/bibliotheque_cours/bibliotheque_cours.cpp.o CMakeFiles/ProjetTD4.dir/bibliotheque_cours/verification_allocation.cpp.o CMakeFiles/ProjetTD4.dir/main.cpp.o -o ProjetTD4 

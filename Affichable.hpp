@@ -16,5 +16,12 @@ class Affichable {
 public:
 	virtual ~Affichable() = default;
 	virtual ostream& afficher(ostream& os) const = 0;
-	virtual ostream& changerCouleur(ostream& os, int couleur) const = 0;
+
+	enum Couleur {
+		RESET,
+		XXX, XXXI, XXXII, XXXIII, XXXIV, XXXV, XXXVI, XXXVII,
+		IC, ICI, ICII, ICIII, ICIV, ICV, ICVI, ICVII
+	};
+
+	virtual ostream& changerCouleur(ostream& os, Couleur couleur) const = 0;
 };

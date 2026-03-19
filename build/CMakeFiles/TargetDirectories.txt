@@ -1,0 +1,4 @@
+/workspaces/TP4INF1015/build/CMakeFiles/ProjetTD4.dir
+/workspaces/TP4INF1015/build/CMakeFiles/ProjetTD4_couverture.dir
+/workspaces/TP4INF1015/build/CMakeFiles/edit_cache.dir
+/workspaces/TP4INF1015/build/CMakeFiles/rebuild_cache.dir

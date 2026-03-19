@@ -18,6 +18,9 @@ public:
 	Heros() = default;
 	Heros(string nom, string parution, string ennemi): 
 		Personnage(nom, parution), ennemi_(ennemi) {}
+		
+	~Heros() = default;
+
 	void ajouterAllies(string nom) {		
 		if (allies_.size() == allies_.capacity()) {
 			auto capacite = (allies_.capacity() == 0) ? 1 : 2 * allies_.capacity();
@@ -25,23 +28,21 @@ public:
 		}
 		allies_.push_back(nom);
 	}
-	~Heros() = default;
+
 	string getEnnemi() const { return ennemi_; }
 	ostream& afficher(ostream& os) const override {
-		//Personnage::changerCouleur(os, 94);
 		Personnage::afficher(os);
 		os << "Ennemi: " << ennemi_ << endl;
-		os << "Alliés: " << endl;
+		os << "Alliï¿½s: " << endl;
 		for (auto nom : allies_) {
 			os << "\t" << nom << endl;
 		}
 		return os;
 	}
-	ostream& changerCouleur(ostream& os, int couleur) const override {
-		os << "\033[" + to_string(couleur) + 'm';
-		return os;
-	}
+
 protected:
+	uint8_t moduloCouleur_ = 1;
+
 	string ennemi_;
 	vector<string> allies_;
 };

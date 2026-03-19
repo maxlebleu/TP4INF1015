@@ -11,6 +11,8 @@
 #include "VilainHeros.hpp"
 #include <span>
 #include "constantes.hpp"
+#include <cstdint>
+#include <memory>
 
 using namespace std;
 
@@ -122,18 +124,16 @@ int main()
 	lireT<Vilain>(fichierVilains, listeVilains);		
 	
 	cout << "***************  HEROS  *************** " << endl;
-	afficherListe<Heros>(listeHeros, trait, constantes::BLEU);
+	afficherListe<Heros>(listeHeros, trait, 1);
 	cout << "***************  VILAINS  *************** " << endl;
-	afficherListe<Vilain>(listeVilains, trait, constantes::ROUGE);
-	
-	// Personnage p(listeHeros[0]); 'Personnage::Personnage' : impossible d'accéder à protected membre déclaré(e) dans la classe 'Personnage'	
-	
+	afficherListe<Vilain>(listeVilains, trait, 4);
+		
 	listePersonnage.insert(listePersonnage.end(), listeHeros.begin(), listeHeros.end());
 	listePersonnage.insert(listePersonnage.end(), listeVilains.begin(), listeVilains.end());
 
 	cout << "***************  PERSONNAGES  *************** " << endl;
 	
-	afficherListe<Personnage>(listePersonnage, trait, constantes::WHITE);
+	afficherListe<Personnage>(listePersonnage, trait, 0);
 	
 	for (auto h : listeHeros) {
 		int pos = 0;
@@ -148,6 +148,6 @@ int main()
 
 	cout << "***************  VILAIN-HEROS  *************** " << endl;
 
-	afficherListe<VilainHeros>(listeVH, trait, constantes::MAGENTA);
+	afficherListe<VilainHeros>(listeVH, trait, 7);
 
 }

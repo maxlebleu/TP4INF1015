@@ -24,10 +24,9 @@ public:
 		os << "Objectif: " << objectif_ << endl;		
 		return os;
 	}
-	 ostream& changerCouleur(ostream& os, int couleur) const override {
-		os << "\033[" + to_string(couleur) + 'm';
-		return os;
-	}
+
 protected:
+	uint8_t moduloCouleur_ = 2;
+
 	string objectif_;
 };

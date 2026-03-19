@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/workspaces/TP4INF1015/build",
+  "command": "/usr/bin/g++  -isystem /workspaces/TP4INF1015/include -g -std=c++20 -fsigned-char -Wall -Wextra -Wpedantic -Woverloaded-virtual -Wno-unknown-pragmas -Wno-enum-compare -Wshadow --coverage -o CMakeFiles/ProjetTD4.dir/affichable.cpp.o -c /workspaces/TP4INF1015/affichable.cpp",
+  "file": "/workspaces/TP4INF1015/affichable.cpp",
+  "output": "CMakeFiles/ProjetTD4.dir/affichable.cpp.o"
+},
+{
+  "directory": "/workspaces/TP4INF1015/build",
+  "command": "/usr/bin/g++  -isystem /workspaces/TP4INF1015/include -g -std=c++20 -fsigned-char -Wall -Wextra -Wpedantic -Woverloaded-virtual -Wno-unknown-pragmas -Wno-enum-compare -Wshadow --coverage -o CMakeFiles/ProjetTD4.dir/bibliotheque_cours/bibliotheque_cours.cpp.o -c /workspaces/TP4INF1015/bibliotheque_cours/bibliotheque_cours.cpp",
+  "file": "/workspaces/TP4INF1015/bibliotheque_cours/bibliotheque_cours.cpp",
+  "output": "CMakeFiles/ProjetTD4.dir/bibliotheque_cours/bibliotheque_cours.cpp.o"
+},
+{
+  "directory": "/workspaces/TP4INF1015/build",
+  "command": "/usr/bin/g++  -isystem /workspaces/TP4INF1015/include -g -std=c++20 -fsigned-char -Wall -Wextra -Wpedantic -Woverloaded-virtual -Wno-unknown-pragmas -Wno-enum-compare -Wshadow --coverage -o CMakeFiles/ProjetTD4.dir/bibliotheque_cours/verification_allocation.cpp.o -c /workspaces/TP4INF1015/bibliotheque_cours/verification_allocation.cpp",
+  "file": "/workspaces/TP4INF1015/bibliotheque_cours/verification_allocation.cpp",
+  "output": "CMakeFiles/ProjetTD4.dir/bibliotheque_cours/verification_allocation.cpp.o"
+},
+{
+  "directory": "/workspaces/TP4INF1015/build",
+  "command": "/usr/bin/g++  -isystem /workspaces/TP4INF1015/include -g -std=c++20 -fsigned-char -Wall -Wextra -Wpedantic -Woverloaded-virtual -Wno-unknown-pragmas -Wno-enum-compare -Wshadow --coverage -o CMakeFiles/ProjetTD4.dir/main.cpp.o -c /workspaces/TP4INF1015/main.cpp",
+  "file": "/workspaces/TP4INF1015/main.cpp",
+  "output": "CMakeFiles/ProjetTD4.dir/main.cpp.o"
+}
+]

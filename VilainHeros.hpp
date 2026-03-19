@@ -24,20 +24,21 @@ public:
 		mission_speciale_ = objectif_ + " dans le monde de " + h.getParution();
 	}
 	~VilainHeros() = default;
-	ostream& changerCouleur(ostream& os, int couleur) const override {
-		os << "\033[" + to_string(couleur) + 'm';
-		return os;
-	}
+
 	ostream& afficher(ostream& os) const override {
 		Vilain::afficher(os);
 		os << "Ennemi: " << ennemi_ << endl;
-		os << "Alliés: " << endl;
+		os << "Allies: " << endl;
 		for (auto nom : allies_) {
 			os << "\t" << nom << endl;
 		}
-		os << "Mission spéciale : " << mission_speciale_;
+		os << "Mission speciale : " << mission_speciale_;
 		return os;
 	}
+
 private:
 	string mission_speciale_;
+
+protected:
+	uint8_t moduloCouleur_ = 2;
 };
